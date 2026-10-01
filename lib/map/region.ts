@@ -1,7 +1,11 @@
-/** Center of the Midwest / PJM / MISO footprint used for the initial view. */
-export const MISO_PJM_CENTER: [number, number] = [-86.0, 40.0];
+/**
+ * Initial view: MISO runs from the Dakotas to the Gulf Coast (roughly
+ * 104°W–82°W, 29°N–49°N), so this zoom frames the whole footprint on a
+ * typical desktop screen.
+ */
+export const MISO_CENTER: [number, number] = [-92.0, 39.2];
 
-export const MISO_PJM_DEFAULT_ZOOM = 6;
+export const MISO_DEFAULT_ZOOM = 4.8;
 
 /** Same-origin MapLibre worker, copied to /public/maplibre on dev/build/install. */
 export const MAPLIBRE_WORKER_URL = "/maplibre/maplibre-gl-worker.mjs";

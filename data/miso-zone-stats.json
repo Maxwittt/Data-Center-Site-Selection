@@ -1,0 +1,652 @@
+{
+  "meta": {
+    "source": "MISO day-ahead ex-post LMP, daily market reports",
+    "generatedAt": "2026-09-30T23:10:10.710Z",
+    "firstDay": "20260901",
+    "lastDay": "20260930",
+    "dayCount": 30,
+    "congestedHourMccThreshold": 1,
+    "avgMccLimit": 10.5,
+    "pctHoursLimit": 80,
+    "hubs": [
+      "INDIANA.HUB",
+      "ILLINOIS.HUB",
+      "MICHIGAN.HUB",
+      "MINN.HUB",
+      "ARKANSAS.HUB",
+      "LOUISIANA.HUB",
+      "MS.HUB",
+      "TEXAS.HUB"
+    ]
+  },
+  "zones": [
+    {
+      "node": "ALTE.AZ",
+      "label": "Alliant East (Wisconsin Power & Light)",
+      "territories": [
+        "WISCONSIN POWER & LIGHT CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.256,
+      "pctHoursCongested": 12.2,
+      "avgLmp": 50.72,
+      "basisMean": 4.756,
+      "basisStd": 9.155
+    },
+    {
+      "node": "ALTW.AZ",
+      "label": "Alliant West (Interstate Power and Light)",
+      "territories": [
+        "INTERSTATE POWER AND LIGHT CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.854,
+      "pctHoursCongested": 18.9,
+      "avgLmp": 49.54,
+      "basisMean": 3.576,
+      "basisStd": 10.639
+    },
+    {
+      "node": "AMIL.CILC.AZ",
+      "label": "Ameren Illinois (CILCO zone)",
+      "territories": [
+        "AMEREN ILLINOIS COMPANY"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -1.653,
+      "pctHoursCongested": 16.5,
+      "avgLmp": 54.99,
+      "basisMean": 1.066,
+      "basisStd": 7.145
+    },
+    {
+      "node": "AMIL.CIPS.AZ",
+      "label": "Ameren Illinois (CIPS zone)",
+      "territories": [
+        "AMEREN ILLINOIS COMPANY"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 2.085,
+      "pctHoursCongested": 39,
+      "avgLmp": 58.25,
+      "basisMean": 4.326,
+      "basisStd": 15.027
+    },
+    {
+      "node": "AMIL.IP.AZ",
+      "label": "Ameren Illinois (IP zone)",
+      "territories": [
+        "AMEREN ILLINOIS COMPANY"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 3.709,
+      "pctHoursCongested": 35,
+      "avgLmp": 59.99,
+      "basisMean": 6.065,
+      "basisStd": 23.399
+    },
+    {
+      "node": "AMMO.UE.AZ",
+      "label": "Ameren Missouri (Union Electric)",
+      "territories": [
+        "UNION ELECTRIC CO - (MO)"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 13.201,
+      "pctHoursCongested": 54.4,
+      "avgLmp": 69.14,
+      "basisMean": 15.22,
+      "basisStd": 58.717
+    },
+    {
+      "node": "CIN.DEI.AZ",
+      "label": "Duke Energy Indiana",
+      "territories": [
+        "DUKE ENERGY INDIANA, LLC"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 3.2,
+      "pctHoursCongested": 54.7,
+      "avgLmp": 61.95,
+      "basisMean": 2.113,
+      "basisStd": 6.019
+    },
+    {
+      "node": "CONS.AZ",
+      "label": "Consumers Energy",
+      "territories": [
+        "CONSUMERS ENERGY CO"
+      ],
+      "hub": "MICHIGAN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -2.892,
+      "pctHoursCongested": 47.9,
+      "avgLmp": 56.74,
+      "basisMean": 2.353,
+      "basisStd": 8.352
+    },
+    {
+      "node": "CWLD.AZ",
+      "label": "Columbia Water & Light (MO)",
+      "territories": [
+        "CITY OF COLUMBIA - (MO)"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -0.286,
+      "pctHoursCongested": 45.8,
+      "avgLmp": 54.03,
+      "basisMean": 0.107,
+      "basisStd": 21.757
+    },
+    {
+      "node": "CWLP.AZ",
+      "label": "Springfield City Water, Light & Power (IL)",
+      "territories": [
+        "CITY OF SPRINGFIELD - (IL)"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -1.593,
+      "pctHoursCongested": 25,
+      "avgLmp": 54.39,
+      "basisMean": 0.469,
+      "basisStd": 1.581
+    },
+    {
+      "node": "DECO.AZ",
+      "label": "DTE Electric",
+      "territories": [
+        "DTE ELECTRIC COMPANY"
+      ],
+      "hub": "MICHIGAN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -4.757,
+      "pctHoursCongested": 46.4,
+      "avgLmp": 55.04,
+      "basisMean": 0.644,
+      "basisStd": 3.175
+    },
+    {
+      "node": "IPL.AZ",
+      "label": "AES Indiana (Indianapolis Power & Light)",
+      "territories": [
+        "INDIANAPOLIS POWER & LIGHT CO"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 3.726,
+      "pctHoursCongested": 48.6,
+      "avgLmp": 62.4,
+      "basisMean": 2.555,
+      "basisStd": 10.217
+    },
+    {
+      "node": "LAFA.AZ",
+      "label": "Lafayette Utilities System (LA)",
+      "territories": [
+        "CITY OF LAFAYETTE - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.087,
+      "pctHoursCongested": 26.3,
+      "avgLmp": 47.94,
+      "basisMean": 0.569,
+      "basisStd": 2.686
+    },
+    {
+      "node": "EAI.EAILD",
+      "label": "Entergy Arkansas",
+      "territories": [
+        "ENTERGY ARKANSAS LLC"
+      ],
+      "hub": "ARKANSAS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.897,
+      "pctHoursCongested": 28.9,
+      "avgLmp": 49.49,
+      "basisMean": 2.713,
+      "basisStd": 9.719
+    },
+    {
+      "node": "EES.ELILD",
+      "label": "Entergy Louisiana",
+      "territories": [
+        "ENTERGY LOUISIANA LLC"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.264,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 47.16,
+      "basisMean": -0.219,
+      "basisStd": 1.794
+    },
+    {
+      "node": "EES.NOPLD",
+      "label": "Entergy New Orleans",
+      "territories": [
+        "ENTERGY NEW ORLEANS, LLC"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.724,
+      "pctHoursCongested": 25.6,
+      "avgLmp": 46.99,
+      "basisMean": -0.387,
+      "basisStd": 2.264
+    },
+    {
+      "node": "EMBA.EMILD",
+      "label": "Entergy Mississippi",
+      "territories": [
+        "ENTERGY MISSISSIPPI LLC"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.664,
+      "pctHoursCongested": 22.8,
+      "avgLmp": 50.65,
+      "basisMean": 4.171,
+      "basisStd": 42.489
+    },
+    {
+      "node": "EES.ETILD",
+      "label": "Entergy Texas",
+      "territories": [
+        "ENTERGY TEXAS INC."
+      ],
+      "hub": "TEXAS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.055,
+      "pctHoursCongested": 27.6,
+      "avgLmp": 48.57,
+      "basisMean": -0.379,
+      "basisStd": 1.036
+    },
+    {
+      "node": "MDU.AZ",
+      "label": "Montana-Dakota Utilities",
+      "territories": [
+        "MONTANA-DAKOTA UTILITIES CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -16.676,
+      "pctHoursCongested": 10,
+      "avgLmp": 35.3,
+      "basisMean": -10.664,
+      "basisStd": 16.845
+    },
+    {
+      "node": "MEC.AZ",
+      "label": "MidAmerican Energy",
+      "territories": [
+        "MIDAMERICAN ENERGY CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.394,
+      "pctHoursCongested": 24.7,
+      "avgLmp": 48.62,
+      "basisMean": 2.65,
+      "basisStd": 13.421
+    },
+    {
+      "node": "MGE.AZ",
+      "label": "Madison Gas & Electric",
+      "territories": [
+        "MADISON GAS & ELECTRIC CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.916,
+      "pctHoursCongested": 13.9,
+      "avgLmp": 51.34,
+      "basisMean": 5.377,
+      "basisStd": 10.739
+    },
+    {
+      "node": "MP.AZ",
+      "label": "Minnesota Power (ALLETE)",
+      "territories": [
+        "ALLETE, INC."
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.927,
+      "pctHoursCongested": 15.3,
+      "avgLmp": 46.5,
+      "basisMean": 0.539,
+      "basisStd": 3.823
+    },
+    {
+      "node": "NIPS.AZ",
+      "label": "NIPSCO (Northern Indiana Public Service)",
+      "territories": [
+        "NORTHERN INDIANA PUB SERV CO"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 4.632,
+      "pctHoursCongested": 76.9,
+      "avgLmp": 62.15,
+      "basisMean": 2.305,
+      "basisStd": 19.458
+    },
+    {
+      "node": "NSP.AZ",
+      "label": "Xcel Energy (Northern States Power)",
+      "territories": [
+        "NORTHERN STATES POWER CO",
+        "NORTHERN STATES POWER CO - MINNESOTA"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.651,
+      "pctHoursCongested": 14.4,
+      "avgLmp": 46.5,
+      "basisMean": 0.532,
+      "basisStd": 1.353
+    },
+    {
+      "node": "OTP.AZ",
+      "label": "Otter Tail Power",
+      "territories": [
+        "OTTER TAIL POWER CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -11.282,
+      "pctHoursCongested": 15,
+      "avgLmp": 42.06,
+      "basisMean": -3.906,
+      "basisStd": 7.933
+    },
+    {
+      "node": "SIGE.AZ",
+      "label": "CenterPoint Energy Indiana (SIGECO)",
+      "territories": [
+        "SOUTHERN INDIANA GAS & ELEC CO"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 1.429,
+      "pctHoursCongested": 42.8,
+      "avgLmp": 59.66,
+      "basisMean": -0.179,
+      "basisStd": 7.715
+    },
+    {
+      "node": "UPPC.AZ",
+      "label": "Upper Peninsula Power Co",
+      "territories": [
+        "UPPER PENINSULA POWER COMPANY"
+      ],
+      "hub": "MICHIGAN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.218,
+      "pctHoursCongested": 15.1,
+      "avgLmp": 51.56,
+      "basisMean": -2.832,
+      "basisStd": 22.049
+    },
+    {
+      "node": "WEC.AZ",
+      "label": "We Energies (Wisconsin Electric)",
+      "territories": [
+        "WISCONSIN ELECTRIC POWER CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.358,
+      "pctHoursCongested": 8.9,
+      "avgLmp": 52.46,
+      "basisMean": 6.495,
+      "basisStd": 15.32
+    },
+    {
+      "node": "WPS.AZ",
+      "label": "Wisconsin Public Service",
+      "territories": [
+        "WISCONSIN PUBLIC SERVICE CORP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.251,
+      "pctHoursCongested": 12.9,
+      "avgLmp": 48.94,
+      "basisMean": 2.976,
+      "basisStd": 7.841
+    }
+  ],
+  "unmapped": [
+    {
+      "node": "AMMO.UA.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 18.385,
+      "pctHoursCongested": 50,
+      "avgLmp": 73.88,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "BREC.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 1.806,
+      "pctHoursCongested": 43.8,
+      "avgLmp": 59.85,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "DPC.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "DPC.NWEC.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.761,
+      "pctHoursCongested": 17.9,
+      "avgLmp": 51.45,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "EAI.CWAYLD1.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.69,
+      "pctHoursCongested": 29.9,
+      "avgLmp": 49.56,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "EES.KRBYVLE.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.188,
+      "pctHoursCongested": 30.1,
+      "avgLmp": 50.16,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "EES.NEWTON1.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -6.372,
+      "pctHoursCongested": 31.5,
+      "avgLmp": 50.53,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "GRE.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "LAGN.DEMCO1.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.47,
+      "pctHoursCongested": 25.6,
+      "avgLmp": 47.41,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "LEPA.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "MPW.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -4.487,
+      "pctHoursCongested": 16.5,
+      "avgLmp": 51.5,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "NSP.NCP.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.23,
+      "pctHoursCongested": 17.8,
+      "avgLmp": 50.42,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "NSP.NU.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -11.112,
+      "pctHoursCongested": 13.9,
+      "avgLmp": 42.94,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "NSP.NWEC.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.714,
+      "pctHoursCongested": 15.1,
+      "avgLmp": 48.47,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "NSP.WIMUNI.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.755,
+      "pctHoursCongested": 17.6,
+      "avgLmp": 51.42,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "SIPC.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "SME.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "SMP.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": null,
+      "basisStd": null
+    },
+    {
+      "node": "UPPC.ESC.AZ",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.56,
+      "pctHoursCongested": 11,
+      "avgLmp": 51.15,
+      "basisMean": null,
+      "basisStd": null
+    }
+  ]
+}

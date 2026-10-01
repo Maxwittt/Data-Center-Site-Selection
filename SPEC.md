@@ -4,13 +4,14 @@
 
 The Data Center Site Selection Evaluator is a geographic decision-support tool for industry professionals—developers, energy analysts, and site-selection consultants—who evaluate land parcels for data center development.
 
-The core problem is well known in the industry: **land is cheap; power is gold.** Inexpensive acreage is abundant. What is scarce is grid access: available capacity, interconnection queue position, transmission proximity, and the economic risk of locating in a constrained utility zone. This product exists to make those constraints visible on a map and comparable in a calculator, so users can screen parcels before they spend on studies, options, or land acquisition.
+The core problem is well known in the industry: **land is cheap; power is gold.** Inexpensive acreage is abundant. What is scarce is grid access: available capacity, interconnection queue position, transmission proximity, and the economic risk of locating in a constrained utility zone. This product exists to make those constraints visible on a map and comparable in a calculator, so users can screen sites before they spend on studies, options, or land acquisition.
 
 Users should be able to:
 
-- Locate and inspect raw land parcels in a geographic context.
-- Understand how far a parcel sits from high-voltage transmission infrastructure.
-- Later, overlay energy-market and interconnection signals that affect project viability.
+- Drop a pin on any point in the MISO region to evaluate it as a candidate site. The product is scoped to MISO until it is done well there; other markets (such as PJM) are a later decision.
+- Understand how far that point sits from high-voltage transmission infrastructure, and at what voltage.
+- See the MISO congestion context of that point (utility zone, congestion cost, basis risk).
+- Later, overlay interconnection signals that affect project viability.
 - Later, compare interconnection-dependent utility ramps against on-site generation strategies.
 
 The product is **not** a full interconnection study, a power-purchase agreement model, or a land-title system. It is a screening and evaluation layer that sits upstream of those workflows.
@@ -26,27 +27,29 @@ The product is **not** a full interconnection study, a power-purchase agreement 
 
 Implementation constraints:
 
-- Prefer typed domain models for parcels, transmission features, and evaluation metrics.
+- Prefer typed domain models for transmission features, pin analysis results, and evaluation metrics.
 - Keep map logic (MapLibre) isolated from product UI (sidebars, calculators, legends).
 - Do not introduce additional major dependencies unless a phase explicitly requires them.
 
 ## 3. Domain Logic & Future Features
 
-Work is sequenced in three phases. Each phase has a distinct user outcome. Later phases depend on earlier map and parcel primitives.
+Work is sequenced in three phases. Each phase has a distinct user outcome. Later phases depend on earlier map and pin primitives.
 
-### Phase 1 — Parcels and transmission distance
+### Phase 1 — Transmission map and pin-drop distance
 
-**Outcome:** An interactive map that shows raw land parcels and their distance to high-voltage transmission lines.
+**Outcome:** An interactive map of real high-voltage transmission lines where the user can drop a pin on any point and see the distance and voltage of the nearest lines.
 
-This phase addresses the primary screening constraint: a cheap parcel that is far from transmission is often uneconomic because interconnection and last-mile infrastructure dominate cost and schedule.
+This phase addresses the primary screening constraint: a cheap site that is far from transmission is often uneconomic because interconnection and last-mile infrastructure dominate cost and schedule.
 
 Scope:
 
 - Render an interactive MapLibre map as the primary workspace.
-- Display raw land parcels as map features (polygons or equivalent).
-- Display high-voltage transmission lines as a distinct layer.
-- Compute and surface distance from a selected parcel to nearby transmission.
-- Allow basic parcel selection and inspection (identity, location, distance-to-line).
+- Display real high-voltage transmission lines (HIFLD, 138 kV and above) as a layer colored by voltage tier, with a legend. Coverage is **MISO only**: lines within 50 miles of MISO's footprint, built offline by `npm run build:transmission`. The buffer keeps distances honest for sites near the MISO border, where the nearest line may sit across it.
+- Clicking the map drops a draggable pin at that point.
+- For the pin, compute and show the nearest line overall (voltage, owner, distance) and the nearest line in each voltage tier, with a connector drawn to the nearest line.
+- Flag results that may be incomplete when the pin is near or outside the edge of the loaded data area. The loaded area is irregular (MISO plus the buffer), so its edge is described by a coverage mask shipped with the data, not a bounding box.
+
+Decided against: clickable land parcels. Any point is a candidate site, so no parcel dataset is required.
 
 Out of scope for Phase 1:
 
@@ -54,20 +57,29 @@ Out of scope for Phase 1:
 - Interconnection queue data products.
 - Financial comparison of FTM vs. BYOP.
 
-### Phase 2 — LMP congestion heatmap
+### Phase 2 — MISO congestion map (zone choropleth)
 
-**Outcome:** A Locational Marginal Pricing (LMP) congestion heatmap that visualizes **basis risk** in net-importing utility zones.
+**Outcome:** A Locational Marginal Pricing (LMP) congestion overlay for **MISO** that visualizes **basis risk** by utility territory, and shows the congestion context of any dropped pin.
 
-Basis risk here means the spread between a hub or reference price and the local node: congestion and loss components that can make a site structurally more expensive (or less bankable) even when nameplate power looks available.
+Basis risk here means the spread between a hub or reference price and the local price: congestion and loss components that can make a site structurally more expensive (or less bankable) even when nameplate power looks available.
+
+Decisions made for this phase:
+
+- **MISO only**, which is now the scope of the whole product, not just this phase. PJM is deferred: it requires an API key and publishes no price-node coordinates.
+- **A zone choropleth, not a smooth heatmap.** Neither MISO nor PJM publishes coordinates for price nodes, so a continuous surface would be invented. Zone-level day-ahead prices are joined to HIFLD retail service territory polygons instead.
+- **Structural, not live.** Values are a 30-day average of MISO day-ahead ex-post prices, rebuilt offline by `npm run build:congestion` into a static file. There is no runtime price API. Most zones use their `*.AZ` price node; Entergy's operating companies publish no such node, so they use the load-weighted `…LD` node instead (for example `EAI.EAILD`), which was checked against the matching hub before being mapped.
+- **"Congestion-exposed" replaces "net-importing".** HIFLD's net-generation fields are sparse, dated and misleading in restructured states, so exposure is a price-based proxy: a zone is congestion-exposed when congestion both adds cost on average and does so in a large share of hours (thresholds in `lib/grid/exposure.ts`, calibrated on the real data).
 
 Scope:
 
-- Overlay LMP / congestion signal as a heatmap or choropleth on the map.
-- Highlight net-importing utility zones where congestion is structurally adverse.
-- Allow users to inspect a location’s congestion context alongside Phase 1 parcel geometry.
+- Overlay MISO zone congestion as a choropleth beneath the transmission lines, colored by either average congestion cost ($/MWh) or the share of hours congested, with a legend, layer toggles, and hover detail.
+- Show, for a dropped pin, the utility zone it sits in: average congestion, hours congested, price versus a reference hub (mean and spread), a congestion-exposure badge, and a caveat when a zone's average is driven by a few extreme hours.
+- Be explicit about coverage: only utilities with a matched price zone are shaded, and a pin outside them says so rather than implying zero congestion.
 
 Out of scope for Phase 2:
 
+- PJM and other markets.
+- Live or forecast prices.
 - Full nodal market simulation.
 - The FTM vs. BYOP calculator (Phase 3).
 
@@ -79,7 +91,7 @@ FTM assumes the project takes utility power over a phased interconnection ramp (
 
 Scope:
 
-- Sidebar UI bound to a selected parcel / site context.
+- Sidebar UI bound to the dropped pin / site context.
 - Compare phased utility ramp (MW over time, implied wait/constraint) vs. BYOP microgrid deployment.
 - Surface the tradeoff in a form useful for screening (timing, capacity path, high-level cost or constraint narrative—exact formulas to be specified when Phase 3 is authorized).
 
@@ -101,8 +113,8 @@ These rules apply to all implementation work on this product:
 
 ## 5. Success Criteria (by phase)
 
-- **Phase 1:** A professional can select a parcel and immediately see how far it is from high-voltage transmission.
-- **Phase 2:** A professional can see whether a candidate location sits in a congested, net-importing zone and reason about basis risk.
+- **Phase 1:** A professional can drop a pin anywhere on the map and immediately see how far it is from high-voltage transmission, and at what voltage.
+- **Phase 2:** A professional can see whether a candidate MISO location sits in a congestion-exposed utility zone and reason about basis risk.
 - **Phase 3:** A professional can compare a utility FTM ramp path with a BYOP gas microgrid path for the same site without leaving the map workspace.
 
 ## 6. Non-goals

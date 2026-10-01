@@ -9,7 +9,10 @@
     "prebuild": "node scripts/copy-maplibre-worker.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"lib/**/*.test.ts\"",
+    "build:congestion": "node scripts/build-miso-congestion.mjs",
+    "build:transmission": "node scripts/build-miso-transmission.mjs"
   },
   "dependencies": {
     "maplibre-gl": "^6.11.2",

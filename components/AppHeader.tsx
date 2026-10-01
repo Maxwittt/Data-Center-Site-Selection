@@ -5,7 +5,7 @@ export default function AppHeader() {
         <h1 className="text-sm font-medium tracking-tight text-zinc-50">
           Data Center Site Selection Evaluator
         </h1>
-        <p className="mt-0.5 text-xs text-zinc-400">MISO / PJM region</p>
+        <p className="mt-0.5 text-xs text-zinc-400">MISO region</p>
       </div>
     </header>
   );

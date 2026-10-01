@@ -1,10 +1,10 @@
-import { VOLTAGE_TIERS } from "@/lib/map/transmission";
+import { VOLTAGE_TIERS } from "@/lib/grid/voltage";
 
 export default function TransmissionLegend() {
   return (
     <aside
       aria-label="Transmission voltage legend"
-      className="pointer-events-auto absolute bottom-4 left-4 z-10 rounded-xl border border-white/10 bg-zinc-950/85 px-4 py-3 shadow-lg shadow-black/40 backdrop-blur-md"
+      className="pointer-events-auto w-56 rounded-xl border border-white/10 bg-zinc-950/85 px-4 py-3 shadow-lg shadow-black/40 backdrop-blur-md"
     >
       <h2 className="text-xs font-semibold tracking-tight text-zinc-50">
         Transmission Voltage
