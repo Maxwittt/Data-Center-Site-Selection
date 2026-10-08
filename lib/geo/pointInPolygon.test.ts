@@ -141,7 +141,10 @@ const cities: Array<[string, [number, number], string | null]> = [
   // Entergy operating companies, whose price node is a load node rather than *.AZ.
   ["Little Rock", [-92.29, 34.75], "Entergy Arkansas"],
   ["Pine Bluff", [-92.0, 34.23], "Entergy Arkansas"],
-  ["Baton Rouge", [-91.19, 30.45], "Entergy Louisiana"],
+  // Downtown Baton Rouge sits inside both Entergy Louisiana and DEMCO in HIFLD.
+  // The smaller territory wins, so this coordinate reports DEMCO.
+  ["Baton Rouge downtown", [-91.19, 30.45], "DEMCO (Dixie Electric Membership)"],
+  ["Baton Rouge west", [-91.25, 30.45], "Entergy Louisiana"],
   ["New Orleans", [-90.07, 29.95], "Entergy New Orleans"],
   ["Jackson, MS", [-90.18, 32.3], "Entergy Mississippi"],
   ["Beaumont, TX", [-94.1, 30.09], "Entergy Texas"],
@@ -149,6 +152,16 @@ const cities: Array<[string, [number, number], string | null]> = [
   ["Madison, WI", [-89.4, 43.07], "Madison Gas & Electric"],
   ["Springfield, IL", [-89.65, 39.8], "Springfield City Water, Light & Power (IL)"],
   ["Columbia, MO", [-92.33, 38.95], "Columbia Water & Light (MO)"],
+  // Member utilities of a shared zone price, which have no polygon of their own.
+  ["Lake Country Power", [-93.21, 46.51], "Great River Energy (Lake Country Power)"],
+  ["Bayfield Electric", [-91.45, 45.76], "Dairyland Power (Bayfield Electric Cooperative)"],
+  ["Kenergy", [-88.22, 37.07], "Big Rivers Electric (Kenergy)"],
+  ["Egyptian Electric", [-89.42, 37.62], "Southern Illinois Power Cooperative (Egyptian Electric Cooperative)"],
+  ["Singing River Electric", [-89.22, 30.29], "Cooperative Energy (Singing River Electric)"],
+  ["Conway, AR", [-92.57, 35.01], "Entergy Arkansas (Conway Corporation)"],
+  ["DEMCO", [-90.9, 30.18], "DEMCO (Dixie Electric Membership)"],
+  ["Rochester, MN", [-92.5, 43.9], "SMMPA (Rochester Public Utilities)"],
+  ["Alexandria, LA", [-92.507, 31.214], "LEPA (Alexandria)"],
   // PJM: no MISO territory.
   ["Columbus, OH", [-83.0, 39.96], null],
   ["Chicago", [-87.63, 41.88], null],

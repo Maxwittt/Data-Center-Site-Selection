@@ -23,8 +23,8 @@ export const CONGESTION_METRICS: {
   id: CongestionMetric;
   label: string;
 }[] = [
-  { id: "avgMcc", label: "Avg congestion cost" },
-  { id: "pctHoursCongested", label: "% hours congested" },
+  { id: "avgMcc", label: "Congestion cost" },
+  { id: "pctHoursCongested", label: "Hours congested" },
 ];
 
 export interface CongestionMeta {
@@ -104,13 +104,13 @@ export interface ColorStop {
   color: string;
 }
 
-// Diverging: teal (congestion lowers price) <- neutral -> rose (adds cost).
-// Dark in the middle, vivid at the extremes, so it reads on the dark basemap.
-const TEAL_STRONG = "#2dd4bf";
-const TEAL_MID = "#0f766e";
-const NEUTRAL = "#3f3f46";
-const ROSE_MID = "#9f1239";
-const ROSE_STRONG = "#fb7185";
+// Diverging: teal (congestion lowers price) <- pale neutral -> rose (adds cost).
+// Farther from zero is darker, so the strongest zones are the darkest shades.
+const TEAL_EXTREME = "#115e59";
+const TEAL_MID = "#5eead4";
+const NEUTRAL = "#d4d4d8";
+const ROSE_MID = "#fda4af";
+const ROSE_EXTREME = "#9f1239";
 
 export function colorStops(
   metric: CongestionMetric,
@@ -119,18 +119,18 @@ export function colorStops(
   if (metric === "avgMcc") {
     const limit = meta.avgMccLimit;
     return [
-      { value: -limit, color: TEAL_STRONG },
+      { value: -limit, color: TEAL_EXTREME },
       { value: -limit / 2, color: TEAL_MID },
       { value: 0, color: NEUTRAL },
       { value: limit / 2, color: ROSE_MID },
-      { value: limit, color: ROSE_STRONG },
+      { value: limit, color: ROSE_EXTREME },
     ];
   }
   const limit = meta.pctHoursLimit;
   return [
     { value: 0, color: NEUTRAL },
     { value: limit / 2, color: ROSE_MID },
-    { value: limit, color: ROSE_STRONG },
+    { value: limit, color: ROSE_EXTREME },
   ];
 }
 
@@ -223,7 +223,7 @@ export function addCongestionLayers(
       layout: { "fill-sort-key": ["get", "drawOrder"] },
       paint: {
         "fill-color": fillColorExpression(metric, collection.meta),
-        "fill-opacity": 0.45,
+        "fill-opacity": 1,
       },
     },
     beforeId,

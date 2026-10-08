@@ -12,7 +12,10 @@
     "lint": "eslint",
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"lib/**/*.test.ts\"",
     "build:congestion": "node scripts/build-miso-congestion.mjs",
-    "build:transmission": "node scripts/build-miso-transmission.mjs"
+    "build:transmission": "node scripts/build-miso-transmission.mjs",
+    "build:substations": "node scripts/build-miso-substations.mjs",
+    "build:gas": "node scripts/build-miso-gas.mjs",
+    "build:queue": "node scripts/build-miso-queue.mjs"
   },
   "dependencies": {
     "maplibre-gl": "^6.11.2",

@@ -98,8 +98,8 @@ export default function CongestionSection({ context }: { context: ZoneContext })
       {context.status === "outside" && (
         <p className="mt-1.5 text-xs leading-snug text-zinc-400">
           Not inside a mapped MISO utility territory, so there is no congestion
-          data for this spot. This includes areas outside MISO and a few
-          smaller MISO zones without matched price data.
+          data for this spot. This includes areas outside MISO and MISO
+          utilities that still have no matched price zone.
         </p>
       )}
 

@@ -205,28 +205,39 @@ function approxArea(geometry) {
 
 /** Fetches the HIFLD territory polygons for every name used in the zone table. */
 async function fetchTerritories(names) {
-  const where = `NAME IN (${names.map((n) => `'${n.replaceAll("'", "''")}'`).join(",")})`;
-  const params = new URLSearchParams({
-    where,
-    outFields: "NAME,STATE,CNTRL_AREA",
-    outSR: "4326",
-    // ~1 km generalization keeps the file small; fine at regional zoom.
-    maxAllowableOffset: "0.01",
-    geometryPrecision: "3",
-    resultRecordCount: "2000",
-    f: "geojson",
-  });
-  const response = await fetch(`${TERRITORIES_URL}?${params}`, {
-    signal: AbortSignal.timeout(90_000),
-  });
-  if (!response.ok) {
-    throw new Error(`HIFLD territories request failed: HTTP ${response.status}`);
+  // One request for the whole table exceeds the service URL limit once
+  // cooperative member territories are included.
+  const features = [];
+  const batchSize = 15;
+  for (let i = 0; i < names.length; i += batchSize) {
+    const batch = names.slice(i, i + batchSize);
+    const where = `NAME IN (${batch.map((n) => `'${n.replaceAll("'", "''")}'`).join(",")})`;
+    const params = new URLSearchParams({
+      where,
+      outFields: "NAME,STATE,CNTRL_AREA",
+      outSR: "4326",
+      // ~1 km generalization keeps the file small; fine at regional zoom.
+      maxAllowableOffset: "0.01",
+      geometryPrecision: "3",
+      resultRecordCount: "2000",
+      f: "geojson",
+    });
+    const response = await fetch(`${TERRITORIES_URL}?${params}`, {
+      signal: AbortSignal.timeout(90_000),
+    });
+    if (!response.ok) {
+      throw new Error(`HIFLD territories request failed: HTTP ${response.status}`);
+    }
+    const json = await response.json();
+    if (json.error) {
+      throw new Error(`HIFLD territories error: ${json.error.message}`);
+    }
+    if (json.properties?.exceededTransferLimit) {
+      throw new Error(`HIFLD territory response was truncated (${batch.length} names).`);
+    }
+    features.push(...json.features);
   }
-  const json = await response.json();
-  if (json.error) {
-    throw new Error(`HIFLD territories error: ${json.error.message}`);
-  }
-  return json.features;
+  return features;
 }
 
 /** Joins zone statistics onto territory polygons. */

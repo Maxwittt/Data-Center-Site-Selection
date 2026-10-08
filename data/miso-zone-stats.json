@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "MISO day-ahead ex-post LMP, daily market reports",
-    "generatedAt": "2026-09-30T23:10:10.710Z",
+    "generatedAt": "2026-10-01T02:00:56.841Z",
     "firstDay": "20260901",
     "lastDay": "20260930",
     "dayCount": 30,
@@ -455,6 +455,1686 @@
       "avgLmp": 48.94,
       "basisMean": 2.976,
       "basisStd": 7.841
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Agralite Electric Cooperative)",
+      "territories": [
+        "AGRALITE ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Arrowhead Cooperative)",
+      "territories": [
+        "ARROWHEAD ELECTRIC COOP, INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (BENCO Electric Cooperative)",
+      "territories": [
+        "BENCO ELECTRIC COOPERATIVE"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Brown County Rural Electric)",
+      "territories": [
+        "BROWN COUNTY RURAL ELEC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Cooperative Light & Power)",
+      "territories": [
+        "COOPERATIVE L&P ASSN LAKE COUNTY"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Dakota Electric)",
+      "territories": [
+        "DAKOTA ELECTRIC ASSOCIATION"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (East Central Energy)",
+      "territories": [
+        "EAST CENTRAL ENERGY"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Federated Rural Electric)",
+      "territories": [
+        "FEDERATED RURAL ELECTRIC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Goodhue County Cooperative)",
+      "territories": [
+        "GOODHUE COUNTY COOP ELEC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Itasca-Mantrap Cooperative)",
+      "territories": [
+        "ITASCA-MANTRAP CO-OP ELECTRICAL ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Kandiyohi Power Cooperative)",
+      "territories": [
+        "KANDIYOHI POWER COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Lake Country Power)",
+      "territories": [
+        "LAKE COUNTRY POWER"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Lake Region Electric Cooperative)",
+      "territories": [
+        "LAKE REGION ELECTRIC COOPERATIVE - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (McLeod Cooperative Power)",
+      "territories": [
+        "MCLEOD COOPERATIVE POWER ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Meeker Cooperative)",
+      "territories": [
+        "MEEKER COOP LIGHT & POWER ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Mille Lacs Energy Cooperative)",
+      "territories": [
+        "MILLE LACS ENERGY COOPERATIVE"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Minnesota Valley Electric Cooperative)",
+      "territories": [
+        "MINNESOTA VALLEY ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Nobles Cooperative Electric)",
+      "territories": [
+        "NOBLES COOPERATIVE ELECTRIC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (North Itasca Electric Cooperative)",
+      "territories": [
+        "NORTH ITASCA ELECTRIC COOP INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Redwood Electric Cooperative)",
+      "territories": [
+        "REDWOOD ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Runestone Electric)",
+      "territories": [
+        "RUNESTONE ELECTRIC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (South Central Electric)",
+      "territories": [
+        "SOUTH CENTRAL ELECTRIC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Stearns Electric)",
+      "territories": [
+        "STEARNS COOPERATIVE ELEC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Steele-Waseca Cooperative Electric)",
+      "territories": [
+        "STEELE-WASECA COOPERATIVE ELECTRIC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Todd-Wadena Electric Cooperative)",
+      "territories": [
+        "TODD-WADENA ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "GRE.AZ",
+      "label": "Great River Energy (Wright-Hennepin Cooperative)",
+      "territories": [
+        "WRIGHT-HENNEPIN COOP ELEC ASSN"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -10.147,
+      "pctHoursCongested": 11.9,
+      "avgLmp": 44.37,
+      "basisMean": -1.6,
+      "basisStd": 3.504
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Allamakee-Clayton Electric Cooperative)",
+      "territories": [
+        "ALLAMAKEE-CLAYTON EL COOP, INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Barron Electric Cooperative)",
+      "territories": [
+        "BARRON ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Bayfield Electric Cooperative)",
+      "territories": [
+        "BAYFIELD ELECTRIC COOP, INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Chippewa Valley Electric Cooperative)",
+      "territories": [
+        "CHIPPEWA VALLEY ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Clark Electric Cooperative)",
+      "territories": [
+        "CLARK ELECTRIC COOP - (WI)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Dunn Energy Cooperative)",
+      "territories": [
+        "DUNN COUNTY ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Eau Claire Energy Cooperative)",
+      "territories": [
+        "EAU CLAIRE ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Freeborn-Mower Electric Cooperative)",
+      "territories": [
+        "FREEBORN MOWER ELECTRIC COOPERATIVE"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Heartland Power Cooperative)",
+      "territories": [
+        "HEARTLAND POWER COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Jackson Electric Cooperative)",
+      "territories": [
+        "JACKSON ELECTRIC COOP, INC - (WI)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Jo-Carroll Energy)",
+      "territories": [
+        "JO-CARROLL ENERGY, INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Jump River Electric Cooperative)",
+      "territories": [
+        "JUMP RIVER ELECTRIC COOP INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (MiEnergy Cooperative)",
+      "territories": [
+        "MIENERGY COOPERATIVE"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Oakdale Electric Cooperative)",
+      "territories": [
+        "OAKDALE ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (People's Energy Cooperative)",
+      "territories": [
+        "PEOPLE'S COOPERATIVE SERVICES"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Pierce Pepin Cooperative Services)",
+      "territories": [
+        "PIERCE-PEPIN COOP SERVICES"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Polk-Burnett Electric Cooperative)",
+      "territories": [
+        "POLK-BURNETT ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Price Electric Cooperative)",
+      "territories": [
+        "PRICE ELECTRIC COOP INC"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Richland Electric Cooperative)",
+      "territories": [
+        "RICHLAND ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Riverland Energy Cooperative)",
+      "territories": [
+        "RIVERLAND ENERGY COOPERATIVE"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (St. Croix Electric Cooperative)",
+      "territories": [
+        "ST CROIX ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Scenic Rivers Energy Cooperative)",
+      "territories": [
+        "SCENIC RIVERS ENERGY COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Taylor Electric Cooperative)",
+      "territories": [
+        "TAYLOR ELECTRIC COOP - (WI)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.AZ",
+      "label": "Dairyland Power (Vernon Electric Cooperative)",
+      "territories": [
+        "VERNON ELECTRIC COOP"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.622,
+      "pctHoursCongested": 16.3,
+      "avgLmp": 49.74,
+      "basisMean": 3.779,
+      "basisStd": 6.647
+    },
+    {
+      "node": "DPC.NWEC.AZ",
+      "label": "Dairyland Power (Northwestern Wisconsin Electric)",
+      "territories": [
+        "NORTHWESTERN WISCONSIN ELEC CO"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.761,
+      "pctHoursCongested": 17.9,
+      "avgLmp": 51.45,
+      "basisMean": 5.483,
+      "basisStd": 9.1
+    },
+    {
+      "node": "BREC.AZ",
+      "label": "Big Rivers Electric (Jackson Purchase Energy)",
+      "territories": [
+        "JACKSON PURCHASE ENERGY CORPORATION"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 1.806,
+      "pctHoursCongested": 43.8,
+      "avgLmp": 59.85,
+      "basisMean": 0.011,
+      "basisStd": 6.883
+    },
+    {
+      "node": "BREC.AZ",
+      "label": "Big Rivers Electric (Kenergy)",
+      "territories": [
+        "KENERGY CORP"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 1.806,
+      "pctHoursCongested": 43.8,
+      "avgLmp": 59.85,
+      "basisMean": 0.011,
+      "basisStd": 6.883
+    },
+    {
+      "node": "BREC.AZ",
+      "label": "Big Rivers Electric (Meade County Rural Electric)",
+      "territories": [
+        "MEADE COUNTY RURAL E C C"
+      ],
+      "hub": "INDIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 1.806,
+      "pctHoursCongested": 43.8,
+      "avgLmp": 59.85,
+      "basisMean": 0.011,
+      "basisStd": 6.883
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (Clay Electric Cooperative)",
+      "territories": [
+        "CLAY ELECTRIC COOP INC"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (Clinton County Electric Cooperative)",
+      "territories": [
+        "CLINTON COUNTY ELEC COOP, INC"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (Egyptian Electric Cooperative)",
+      "territories": [
+        "EGYPTIAN ELECTRIC COOP ASSN"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (Monroe County Electric Cooperative)",
+      "territories": [
+        "MONROE COUNTY ELEC COOP, INC"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (SouthEastern Illinois Electric Cooperative)",
+      "territories": [
+        "SOUTHEASTERN IL ELEC COOP, INC"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (Southern Illinois Electric Cooperative)",
+      "territories": [
+        "SOUTHERN ILLINOIS ELEC COOP"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (Tri-County Electric Cooperative)",
+      "territories": [
+        "TRI-COUNTY ELECTRIC COOP, INC (IL)"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SIPC.AZ",
+      "label": "Southern Illinois Power Cooperative (City of McLeansboro)",
+      "territories": [
+        "CITY OF MCLEANSBORO - (IL)"
+      ],
+      "hub": "ILLINOIS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": 6.113,
+      "pctHoursCongested": 49,
+      "avgLmp": 63.27,
+      "basisMean": 9.349,
+      "basisStd": 32.126
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Coahoma Electric)",
+      "territories": [
+        "COAHOMA ELECTRIC POWER ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Delta Electric)",
+      "territories": [
+        "DELTA ELECTRIC POWER ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Dixie Electric Power Association)",
+      "territories": [
+        "DIXIE ELECTRIC POWER ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Magnolia Electric)",
+      "territories": [
+        "MAGNOLIA ELECTRIC POWER ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Pearl River Valley Electric)",
+      "territories": [
+        "PEARL RIVER VALLEY EL PWR ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Singing River Electric)",
+      "territories": [
+        "SINGING RIVER ELEC COOPERATIVE"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Southern Pine Electric)",
+      "territories": [
+        "SOUTHERN PINE ELECTRIC COOPERATIVE"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Southwest Mississippi Electric)",
+      "territories": [
+        "SOUTHWEST MISSISSIPPI E P A"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Twin County Electric)",
+      "territories": [
+        "TWIN COUNTY ELECTRIC PWR ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "SME.AZ",
+      "label": "Cooperative Energy (Yazoo Valley Electric)",
+      "territories": [
+        "YAZOO VALLEY ELEC POWER ASSN"
+      ],
+      "hub": "MS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.783,
+      "pctHoursCongested": 21.5,
+      "avgLmp": 47.84,
+      "basisMean": 1.356,
+      "basisStd": 9.487
+    },
+    {
+      "node": "LAGN.DEMCO1.AZ",
+      "label": "DEMCO (Dixie Electric Membership)",
+      "territories": [
+        "DIXIE ELECTRIC MEMBERSHIP CORP"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.47,
+      "pctHoursCongested": 25.6,
+      "avgLmp": 47.41,
+      "basisMean": 0.031,
+      "basisStd": 0.279
+    },
+    {
+      "node": "EAI.CWAYLD1.AZ",
+      "label": "Entergy Arkansas (Conway Corporation)",
+      "territories": [
+        "CONWAY CORPORATION"
+      ],
+      "hub": "ARKANSAS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -5.69,
+      "pctHoursCongested": 29.9,
+      "avgLmp": 49.56,
+      "basisMean": 2.785,
+      "basisStd": 9.403
+    },
+    {
+      "node": "EES.KRBYVLE.AZ",
+      "label": "Entergy Texas (Kirbyville Light & Power)",
+      "territories": [
+        "KIRBYVILLE LIGHT & POWER CO"
+      ],
+      "hub": "TEXAS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -7.188,
+      "pctHoursCongested": 30.1,
+      "avgLmp": 50.16,
+      "basisMean": 1.212,
+      "basisStd": 4.33
+    },
+    {
+      "node": "EES.NEWTON1.AZ",
+      "label": "Entergy Texas (City of Newton)",
+      "territories": [
+        "CITY OF NEWTON - (TX)"
+      ],
+      "hub": "TEXAS.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -6.372,
+      "pctHoursCongested": 31.5,
+      "avgLmp": 50.53,
+      "basisMean": 1.588,
+      "basisStd": 6.244
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Austin Utilities)",
+      "territories": [
+        "CITY OF AUSTIN - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Blooming Prairie)",
+      "territories": [
+        "CITY OF BLOOMING PRAIRIE - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Fairmont Public Utilities)",
+      "territories": [
+        "FAIRMONT PUBLIC UTILITIES COMM"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Grand Marais)",
+      "territories": [
+        "CITY OF GRAND MARAIS - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Lake City Utilities)",
+      "territories": [
+        "CITY OF LAKE CITY - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Litchfield Public Utilities)",
+      "territories": [
+        "LITCHFIELD PUBLIC UTILITIES"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Mora Municipal Utilities)",
+      "territories": [
+        "CITY OF MORA - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (New Prague Utilities)",
+      "territories": [
+        "NEW PRAGUE UTILITIES COMM"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (North Branch Water & Light)",
+      "territories": [
+        "NORTH BRANCH WATER & LIGHT COMM"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Owatonna Public Utilities)",
+      "territories": [
+        "CITY OF OWATONNA - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Preston Public Utilities)",
+      "territories": [
+        "PRESTON PUBLIC UTILITIES COMM"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Princeton Public Utilities)",
+      "territories": [
+        "PRINCETON PUBLIC UTILS COMM"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Redwood Falls Public Utilities)",
+      "territories": [
+        "REDWOOD FALLS PUBLIC UTIL COMM"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Rochester Public Utilities)",
+      "territories": [
+        "ROCHESTER PUBLIC UTILITIES"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Saint Peter Municipal Utilities)",
+      "territories": [
+        "CITY OF SAINT PETER"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Waseca Utilities)",
+      "territories": [
+        "CITY OF WASECA - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "SMP.AZ",
+      "label": "SMMPA (Wells Public Utilities)",
+      "territories": [
+        "CITY OF WELLS - (MN)"
+      ],
+      "hub": "MINN.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -8.054,
+      "pctHoursCongested": 20.6,
+      "avgLmp": 46.47,
+      "basisMean": 0.505,
+      "basisStd": 8.172
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Abbeville)",
+      "territories": [
+        "CITY OF ABBEVILLE - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Alexandria)",
+      "territories": [
+        "CITY OF ALEXANDRIA - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Erath)",
+      "territories": [
+        "CITY OF ERATH - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Gueydan)",
+      "territories": [
+        "TOWN OF GUEYDAN"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Jonesville)",
+      "territories": [
+        "CITY OF JONESVILLE - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Kaplan)",
+      "territories": [
+        "CITY OF KAPLAN - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Minden)",
+      "territories": [
+        "CITY OF MINDEN - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Morgan City)",
+      "territories": [
+        "MORGAN CITY - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Natchitoches)",
+      "territories": [
+        "CITY OF NATCHITOCHES"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (New Roads)",
+      "territories": [
+        "CITY OF NEW ROADS - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Plaquemine)",
+      "territories": [
+        "CITY OF PLAQUEMINE - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Rayne)",
+      "territories": [
+        "CITY OF RAYNE - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Ruston)",
+      "territories": [
+        "CITY OF RUSTON - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (St. Martinville)",
+      "territories": [
+        "CITY OF ST MARTINVILLE - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Vidalia)",
+      "territories": [
+        "TOWN OF VIDALIA - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Vinton Public Power Authority)",
+      "territories": [
+        "VINTON PUBLIC POWER AUTHORITY"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Vinton)",
+      "territories": [
+        "TOWN OF VINTON - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Welsh)",
+      "territories": [
+        "TOWN OF WELSH - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
+    },
+    {
+      "node": "LEPA.AZ",
+      "label": "LEPA (Winnfield)",
+      "territories": [
+        "CITY OF WINNFIELD - (LA)"
+      ],
+      "hub": "LOUISIANA.HUB",
+      "days": 30,
+      "hours": 720,
+      "avgMcc": -9.169,
+      "pctHoursCongested": 25.7,
+      "avgLmp": 48.06,
+      "basisMean": 0.683,
+      "basisStd": 2.309
     }
   ],
   "unmapped": [
@@ -465,96 +2145,6 @@
       "avgMcc": 18.385,
       "pctHoursCongested": 50,
       "avgLmp": 73.88,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "BREC.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": 1.806,
-      "pctHoursCongested": 43.8,
-      "avgLmp": 59.85,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "DPC.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -7.622,
-      "pctHoursCongested": 16.3,
-      "avgLmp": 49.74,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "DPC.NWEC.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -7.761,
-      "pctHoursCongested": 17.9,
-      "avgLmp": 51.45,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "EAI.CWAYLD1.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -5.69,
-      "pctHoursCongested": 29.9,
-      "avgLmp": 49.56,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "EES.KRBYVLE.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -7.188,
-      "pctHoursCongested": 30.1,
-      "avgLmp": 50.16,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "EES.NEWTON1.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -6.372,
-      "pctHoursCongested": 31.5,
-      "avgLmp": 50.53,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "GRE.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -10.147,
-      "pctHoursCongested": 11.9,
-      "avgLmp": 44.37,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "LAGN.DEMCO1.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -9.47,
-      "pctHoursCongested": 25.6,
-      "avgLmp": 47.41,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "LEPA.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -9.169,
-      "pctHoursCongested": 25.7,
-      "avgLmp": 48.06,
       "basisMean": null,
       "basisStd": null
     },
@@ -605,36 +2195,6 @@
       "avgMcc": -7.755,
       "pctHoursCongested": 17.6,
       "avgLmp": 51.42,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "SIPC.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": 6.113,
-      "pctHoursCongested": 49,
-      "avgLmp": 63.27,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "SME.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -8.783,
-      "pctHoursCongested": 21.5,
-      "avgLmp": 47.84,
-      "basisMean": null,
-      "basisStd": null
-    },
-    {
-      "node": "SMP.AZ",
-      "days": 30,
-      "hours": 720,
-      "avgMcc": -8.054,
-      "pctHoursCongested": 20.6,
-      "avgLmp": 46.47,
       "basisMean": null,
       "basisStd": null
     },

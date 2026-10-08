@@ -72,3 +72,29 @@ export function createPinMarker(): Marker {
 
   return new Marker({ element, draggable: true });
 }
+
+/** A small lettered marker for a site saved to the comparison. */
+export function createSiteMarker(label: string, onClick: () => void): Marker {
+  const element = document.createElement("button");
+  element.type = "button";
+  element.className = PIN_MARKER_CLASS;
+  element.textContent = label;
+  element.setAttribute("aria-label", `Saved site ${label}`);
+  element.style.cssText = [
+    "width:20px",
+    "height:20px",
+    "border-radius:9999px",
+    "background:#09090b",
+    "color:#22d3ee",
+    "border:2px solid #22d3ee",
+    "font:700 11px/16px system-ui,sans-serif",
+    "text-align:center",
+    "cursor:pointer",
+    "padding:0",
+  ].join(";");
+  element.addEventListener("click", (event) => {
+    event.stopPropagation();
+    onClick();
+  });
+  return new Marker({ element });
+}

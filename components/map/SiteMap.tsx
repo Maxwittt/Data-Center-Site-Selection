@@ -20,9 +20,37 @@ import {
   type Position,
   type TransmissionLineFeature,
 } from "@/lib/data/hifld";
+import {
+  fetchGasPipelines,
+  fetchQueue,
+  fetchSubstations,
+  type GasPipelineFeature,
+  type QueueData,
+  type SubstationFeature,
+} from "@/lib/data/sites";
 import { createCoverage, type Coverage } from "@/lib/geo/coverage";
 import { findZonesAt } from "@/lib/geo/pointInPolygon";
 import { analyzePin, type PinAnalysis } from "@/lib/geo/proximity";
+import { analyzeSite, type SiteContext, type SiteData } from "@/lib/geo/site";
+import {
+  decodeShare,
+  defaultInputs,
+  encodeShare,
+  forNewSite,
+  type CalculatorInputs,
+  type LngLat,
+} from "@/lib/grid/calculator";
+import { screenSite } from "@/lib/grid/screening";
+import { SITE_LABELS, summarizeSite, type ZoneSummary } from "@/lib/grid/summary";
+import ComparePanel from "@/components/map/ComparePanel";
+import SearchBox from "@/components/map/SearchBox";
+import {
+  addGasLayer,
+  addSubstationLayer,
+  GAS_LAYER,
+  setLayerVisible,
+  SUBSTATION_LAYER,
+} from "@/lib/map/sites";
 import {
   addCongestionLayers,
   CONGESTION_FILL_LAYER,
@@ -44,6 +72,7 @@ import {
   addPinConnectorLayer,
   clearPinConnector,
   createPinMarker,
+  createSiteMarker,
   PIN_MARKER_CLASS,
   setPinConnector,
 } from "@/lib/map/pin";
@@ -64,6 +93,15 @@ interface HoverState {
 
 const DEFAULT_METRIC: CongestionMetric = "avgMcc";
 
+const DATASET_LABELS = [
+  "Transmission lines",
+  "Substations",
+  "Gas pipelines",
+  "Generator queue",
+  "Congestion",
+] as const;
+type DatasetLabel = (typeof DATASET_LABELS)[number];
+
 export default function SiteMap() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<LoadStatus>("loading");
@@ -79,12 +117,33 @@ export default function SiteMap() {
   const [showLines, setShowLines] = useState(true);
   const [metric, setMetric] = useState<CongestionMetric>(DEFAULT_METRIC);
   const [hover, setHover] = useState<HoverState | null>(null);
+  const [showSubstations, setShowSubstations] = useState(true);
+  const [showGas, setShowGas] = useState(false);
+
+  const [substations, setSubstations] = useState<SubstationFeature[] | null>(null);
+  const [pipelines, setPipelines] = useState<GasPipelineFeature[] | null>(null);
+  const [queue, setQueue] = useState<QueueData | null>(null);
+  const [siteFailed, setSiteFailed] = useState<SiteData["failed"]>({});
+  const [layersReady, setLayersReady] = useState(0);
+  const [inputs, setInputs] = useState<CalculatorInputs>(() =>
+    defaultInputs(new Date().getFullYear()),
+  );
+  const [savedSites, setSavedSites] = useState<LngLat[]>([]);
+  const [grid, setGrid] = useState<{
+    lines: TransmissionLineFeature[];
+    coverage: Coverage;
+  } | null>(null);
+  // Set once the shared link (if any) has been applied, so the URL isn't
+  // overwritten with defaults while the data is still loading.
+  const [urlReady, setUrlReady] = useState(false);
+  const [builtAt, setBuiltAt] = useState<Partial<Record<DatasetLabel, string>>>({});
 
   // The effect below owns the map; these let UI handlers and other effects
   // reach into it.
   const mapRef = useRef<MapLibreMap | null>(null);
   const metricRef = useRef(metric);
   const setPinRef = useRef<(point: Position | null) => void>(() => {});
+  const flyToRef = useRef<(point: Position) => void>(() => {});
 
   useEffect(() => {
     metricRef.current = metric;
@@ -132,6 +191,7 @@ export default function SiteMap() {
 
       const result = analyzePin(point, lines, coverage);
       setAnalysis(result);
+      setInputs(forNewSite);
       setPinConnector(map, point, result.nearest?.closestPoint ?? null);
 
       if (!marker) {
@@ -146,6 +206,13 @@ export default function SiteMap() {
       }
     }
     setPinRef.current = setPin;
+    flyToRef.current = (point) => {
+      map.flyTo({ center: point, zoom: Math.max(map.getZoom(), 8) });
+      setPin(point);
+    };
+    const shared = decodeShare(window.location.search, new Date().getFullYear());
+    const built = (label: DatasetLabel, date: string) =>
+      setBuiltAt((dates) => ({ ...dates, [label]: date }));
 
     map.on("error", (event) => {
       console.error("MapLibre error:", event.error);
@@ -214,6 +281,7 @@ export default function SiteMap() {
           }
           addCongestionLayers(map, collection, metricRef.current);
           setCongestion(collection);
+          built("Congestion", collection.meta.generatedAt);
         })
         .catch((err: unknown) => {
           if (abort.signal.aborted) {
@@ -225,6 +293,36 @@ export default function SiteMap() {
           );
         });
 
+      const markFailed = (key: keyof SiteData["failed"]) => (err: unknown) => {
+        if (abort.signal.aborted) {
+          return;
+        }
+        console.error(err);
+        setSiteFailed((failed) => ({ ...failed, [key]: true }));
+      };
+      fetchGasPipelines(abort.signal)
+        .then((collection) => {
+          addGasLayer(map, collection);
+          setPipelines(collection.features);
+          built("Gas pipelines", collection.meta.generatedAt);
+          setLayersReady((n) => n + 1);
+        })
+        .catch(markFailed("pipelines"));
+      fetchSubstations(abort.signal)
+        .then((collection) => {
+          addSubstationLayer(map, collection);
+          setSubstations(collection.features);
+          built("Substations", collection.meta.generatedAt);
+          setLayersReady((n) => n + 1);
+        })
+        .catch(markFailed("substations"));
+      fetchQueue(abort.signal)
+        .then((data) => {
+          setQueue(data);
+          built("Generator queue", data.meta.generatedAt);
+        })
+        .catch(markFailed("queue"));
+
       fetchTransmissionLines(abort.signal)
         .then((collection) => {
           lines = collection.features;
@@ -232,7 +330,18 @@ export default function SiteMap() {
           const source = map.getSource<GeoJSONSource>(TRANSMISSION_SOURCE);
           source?.setData(collection as Parameters<GeoJSONSource["setData"]>[0]);
           map.getCanvas().style.cursor = "crosshair";
+          setGrid({ lines: collection.features, coverage: createCoverage(collection.meta.coverage) });
+          built("Transmission lines", collection.meta.generatedAt);
           setStatus("ready");
+
+          setSavedSites(shared.sites);
+          if (shared.pin) {
+            map.jumpTo({ center: shared.pin, zoom: Math.max(map.getZoom(), 7) });
+            setPin(shared.pin);
+          }
+          // After setPin, so its reset of the year overrides doesn't win.
+          setInputs(shared.inputs);
+          setUrlReady(true);
         })
         .catch((err: unknown) => {
           if (abort.signal.aborted) {
@@ -249,6 +358,7 @@ export default function SiteMap() {
     return () => {
       abort.abort();
       setPinRef.current = () => {};
+      flyToRef.current = () => {};
       marker?.remove();
       mapRef.current = null;
       map.remove();
@@ -283,7 +393,78 @@ export default function SiteMap() {
     }
   }, [showLines, status]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map) {
+      setLayerVisible(map, SUBSTATION_LAYER, showSubstations);
+      setLayerVisible(map, GAS_LAYER, showGas);
+    }
+  }, [showSubstations, showGas, layersReady]);
+
   const zonesVisible = showZones && congestionMeta !== null;
+
+  // Derived like the congestion context, so late-loading datasets fill in.
+  const siteContext = useMemo<SiteContext | null>(
+    () =>
+      analysis
+        ? analyzeSite(analysis.point, analysis.coverageMarginMiles, {
+            substations,
+            pipelines,
+            queue,
+            failed: siteFailed,
+          })
+        : null,
+    [analysis, substations, pipelines, queue, siteFailed],
+  );
+
+  const screening = useMemo(
+    () => (analysis && siteContext ? screenSite(analysis.nearest, siteContext) : null),
+    [analysis, siteContext],
+  );
+
+  // Lettered markers for saved sites; clicking one moves the pin there.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const markers = savedSites.map((point, i) =>
+      createSiteMarker(SITE_LABELS[i], () => setPinRef.current(point)).setLngLat(point).addTo(map),
+    );
+    return () => markers.forEach((marker) => marker.remove());
+  }, [savedSites]);
+
+  const summaries = useMemo(() => {
+    if (!grid) return [];
+    const nowYear = new Date().getFullYear();
+    const siteData: SiteData = { substations, pipelines, queue, failed: siteFailed };
+    return savedSites.map((point) => {
+      const pin = analyzePin(point, grid.lines, grid.coverage);
+      const top = congestion ? findZonesAt(point, congestion.features)[0] : undefined;
+      const zone: ZoneSummary | null = top
+        ? { name: top.properties.name, avgMcc: top.properties.avgMcc }
+        : null;
+      return summarizeSite(
+        pin,
+        analyzeSite(point, pin.coverageMarginMiles, siteData),
+        zone,
+        inputs,
+        nowYear,
+      );
+    });
+  }, [grid, savedSites, substations, pipelines, queue, siteFailed, congestion, inputs]);
+
+  const pinPoint = analysis?.point ?? null;
+  useEffect(() => {
+    if (!urlReady) return;
+    const query = encodeShare(
+      { pin: pinPoint ? [pinPoint[0], pinPoint[1]] : null, sites: savedSites, inputs },
+      new Date().getFullYear(),
+    );
+    window.history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
+  }, [urlReady, pinPoint, savedSites, inputs]);
+
+  const samePoint = (a: LngLat, b: Position) =>
+    Math.abs(a[0] - b[0]) < 1e-5 && Math.abs(a[1] - b[1]) < 1e-5;
+  const pinSaved = pinPoint ? savedSites.some((site) => samePoint(site, pinPoint)) : false;
 
   // Congestion at the pin. Derived, so a pin dropped before the data finishes
   // loading fills in by itself, and it still works with the layer toggled off.
@@ -316,40 +497,66 @@ export default function SiteMap() {
     <div className="absolute inset-0">
       <div ref={containerRef} className="h-screen w-screen" />
 
-      <LayersCard
-        showLines={showLines}
-        onShowLinesChange={setShowLines}
-        showZones={showZones}
-        onShowZonesChange={setShowZones}
-        metric={metric}
-        onMetricChange={setMetric}
-        meta={congestionMeta}
-      />
+      <div className="pointer-events-none absolute top-24 left-4 z-10 flex items-start gap-2">
+        <LayersCard
+          showLines={showLines}
+          onShowLinesChange={setShowLines}
+          showZones={showZones}
+          onShowZonesChange={setShowZones}
+          metric={metric}
+          onMetricChange={setMetric}
+          meta={congestionMeta}
+          showSubstations={showSubstations}
+          onShowSubstationsChange={setShowSubstations}
+          showGas={showGas}
+          onShowGasChange={setShowGas}
+          dataDates={DATASET_LABELS.flatMap((label) =>
+            builtAt[label] ? [{ label, date: builtAt[label] }] : [],
+          )}
+        />
+        {status === "ready" && <SearchBox onResult={(point) => flyToRef.current(point)} />}
+      </div>
 
       <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex flex-col gap-3">
         {zonesVisible && <CongestionLegend metric={metric} meta={congestionMeta} />}
         {/* The pin card lists the same voltage tiers, so hide that legend then. */}
-        {!analysis && showLines && <TransmissionLegend />}
+        {!analysis && (showLines || showSubstations || showGas) && (
+          <TransmissionLegend
+            showLines={showLines}
+            showSubstations={showSubstations}
+            showGas={showGas}
+          />
+        )}
       </div>
 
       {hover && zonesVisible && (
         <ZoneTooltip x={hover.x} y={hover.y} zone={hover.zone} />
       )}
 
-      {analysis ? (
+      {analysis && siteContext && screening && (
         <PinCard
           analysis={analysis}
+          site={siteContext}
+          screening={screening}
           congestion={zoneContext}
+          inputs={inputs}
+          onInputsChange={setInputs}
+          saveState={pinSaved ? "saved" : savedSites.length >= 3 ? "full" : "available"}
+          onSave={() => {
+            if (pinPoint && !pinSaved && savedSites.length < 3) {
+              setSavedSites((sites) => [...sites, [pinPoint[0], pinPoint[1]]]);
+            }
+          }}
           onClear={() => setPinRef.current(null)}
         />
-      ) : (
-        status === "ready" && (
-          <div className="pointer-events-none absolute top-4 right-4 z-10 max-w-64 rounded-xl border border-white/10 bg-zinc-950/85 px-4 py-3 text-xs text-zinc-300 shadow-lg shadow-black/40 backdrop-blur-md">
-            Click anywhere on the map to drop a pin and measure the distance to
-            nearby transmission lines.
-          </div>
-        )
       )}
+
+      <ComparePanel
+        summaries={summaries}
+        inputs={inputs}
+        onShow={(i) => flyToRef.current(savedSites[i])}
+        onRemove={(i) => setSavedSites((sites) => sites.filter((_, j) => j !== i))}
+      />
 
       {status === "loading" && (
         <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-lg border border-white/10 bg-zinc-950/90 px-3 py-2 text-xs text-zinc-300">

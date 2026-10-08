@@ -68,6 +68,7 @@ Decisions made for this phase:
 - **MISO only**, which is now the scope of the whole product, not just this phase. PJM is deferred: it requires an API key and publishes no price-node coordinates.
 - **A zone choropleth, not a smooth heatmap.** Neither MISO nor PJM publishes coordinates for price nodes, so a continuous surface would be invented. Zone-level day-ahead prices are joined to HIFLD retail service territory polygons instead.
 - **Structural, not live.** Values are a 30-day average of MISO day-ahead ex-post prices, rebuilt offline by `npm run build:congestion` into a static file. There is no runtime price API. Most zones use their `*.AZ` price node; Entergy's operating companies publish no such node, so they use the load-weighted `…LD` node instead (for example `EAI.EAILD`), which was checked against the matching hub before being mapped.
+- **G&T and joint-action prices are drawn on member retail territories.** Great River Energy, Dairyland, Big Rivers, Southern Illinois Power Cooperative, Cooperative Energy, SMMPA, and LEPA publish one zone price and have no retail polygon of their own. Each member distribution utility in HIFLD is shaded with that shared price. A price node that only subdivides an already mapped polygon (for example `AMMO.UA` inside Union Electric) stays off the map so it is not averaged into the parent territory.
 - **"Congestion-exposed" replaces "net-importing".** HIFLD's net-generation fields are sparse, dated and misleading in restructured states, so exposure is a price-based proxy: a zone is congestion-exposed when congestion both adds cost on average and does so in a large share of hours (thresholds in `lib/grid/exposure.ts`, calibrated on the real data).
 
 Scope:
@@ -93,7 +94,28 @@ Scope:
 
 - Sidebar UI bound to the dropped pin / site context.
 - Compare phased utility ramp (MW over time, implied wait/constraint) vs. BYOP microgrid deployment.
-- Surface the tradeoff in a form useful for screening (timing, capacity path, high-level cost or constraint narrative—exact formulas to be specified when Phase 3 is authorized).
+- Surface the tradeoff in a form useful for screening (timing and capacity path).
+
+Decisions made for the first slice of this phase (authorized with the interconnection screening plan):
+
+- **A screening ramp, not a studied duration.** No public dataset gives months-to-connect by utility. The pin card estimates a stepped utility ramp from the nearest loaded line's voltage and distance, and a fixed on-site gas lead time. Both are defaults the user can edit. They reset when the pin moves.
+- **Default years, from today.** Full utility power is 4 years beside 500 kV+, 5 beside 345 kV, 6 beside 230 kV, 7 beside 138–161 kV, and 8 when no line is loaded. Add one year for every 10 miles past the first mile, capped at 3 extra years. Partial utility power is 2 years earlier than full (never sooner than 1 year) and is 40% of the requested megawatts. On-site gas (BYOP) starts at 2 years to the full request; the second slice below adjusts it for pipeline distance.
+- **A gap is partial power with the rest unsourced.** All three year fields count from today. On-site gas covers the full request from the year it is built. The card warns only when partial utility power has arrived and neither gas nor full utility power is online yet. Gas that is ready by the partial step covers the request through the rest of the utility ramp.
+
+Decisions made for the second slice (authorized with the missing-features plan):
+
+- **Connect at a substation or a new station on a line, whichever is faster.** HIFLD substations at 230 kV and above are loaded. The utility default is the faster of the nearest such substation (voltage and distance rules above) and the nearest line plus 1 year for a new switching station.
+- **Gas pipeline distance sets the on-site gas default.** EIA interstate pipelines only (trunk lines sized for hundreds of MW). Within 5 miles adds nothing; each further 15 miles adds a year, capped at 2. No pipeline in the loaded data counts as the cap. Pipeline data that has not loaded or failed adds nothing.
+- **Generator queue backlog is a labeled proxy.** Active MISO generator requests are summed by county at Census centroids, and the pin card sums them within 50 miles. Above the 75th percentile of covered counties is heavy and adds 1 year to the utility default. It is not the data center's own queue position.
+- **Energy cost per MWh is a screening comparison.** Utility = an editable all-in rate (default $70/MWh) plus the zone's average day-ahead congestion. On-site gas = gas price (default $3.50/MMBtu) times heat rate (default 8.5 MMBtu/MWh) plus an editable O&M and capital adder (default $30/MWh). The annual difference assumes 90% load.
+- **Compare and share.** Up to 3 saved sites are compared on their default years with shared megawatts and cost inputs. The URL carries the pin, saved sites, and any edited inputs. The comparison exports as CSV.
+- **Search.** Typed coordinates are parsed locally; place names use OpenStreetMap Nominatim, one request per search.
+
+Out of scope for this phase:
+
+- A single months-by-utility lookup.
+- Treating the generation interconnection queue as the data center's interconnection clock.
+- Fiber, water, flood, PJM or other ISOs, and live prices.
 
 Out of scope for Phase 3 unless later specified:
 
