@@ -21,10 +21,14 @@ export default function CongestionLegend({ metric, meta }: CongestionLegendProps
       <div className="flex items-start justify-between gap-2">
         <h2 className="text-xs font-semibold tracking-tight text-zinc-50">
           {isCost ? "Avg Congestion Cost" : "Hours Congested"}
+          {isCost && (
+            <span className="ml-1.5 font-normal text-zinc-500">$/MWh</span>
+          )}
         </h2>
         <SourceNote>
-          MISO day-ahead prices joined to HIFLD utility territories. Only
-          utilities with a matched price zone are shaded.
+          {isCost
+            ? "Day-ahead marginal congestion vs. system energy. MISO prices joined to HIFLD utility territories; only matched zones are shaded."
+            : "Share of hours with congestion cost above the threshold. MISO prices joined to HIFLD utility territories; only matched zones are shaded."}
         </SourceNote>
       </div>
 
@@ -45,10 +49,6 @@ export default function CongestionLegend({ metric, meta }: CongestionLegendProps
             <span>lowers price</span>
             <span>adds cost</span>
           </div>
-          <p className="mt-2 text-[10px] leading-snug text-zinc-500">
-            $/MWh, day-ahead marginal congestion component vs. system energy
-            price.
-          </p>
         </>
       ) : (
         <>

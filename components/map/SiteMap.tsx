@@ -71,8 +71,11 @@ import {
 import {
   addPinConnectorLayer,
   clearPinConnector,
+  clearPinPadding,
   createPinMarker,
   createSiteMarker,
+  pinCardPadding,
+  revealPin,
   PIN_MARKER_CLASS,
   setPinConnector,
 } from "@/lib/map/pin";
@@ -177,11 +180,12 @@ export default function SiteMap() {
     map.addControl(new NavigationControl({ showCompass: false }), "bottom-right");
 
     /** Drops (or moves) the pin and recomputes; `null` removes it. */
-    function setPin(point: Position | null) {
+    function setPin(point: Position | null, opts?: { reveal?: boolean }) {
       if (!point) {
         marker?.remove();
         marker = null;
         clearPinConnector(map);
+        clearPinPadding(map);
         setAnalysis(null);
         return;
       }
@@ -204,11 +208,17 @@ export default function SiteMap() {
       } else {
         marker.setLngLat(point);
       }
+      if (opts?.reveal !== false) revealPin(map, point);
     }
     setPinRef.current = setPin;
     flyToRef.current = (point) => {
-      map.flyTo({ center: point, zoom: Math.max(map.getZoom(), 8) });
-      setPin(point);
+      const { width } = map.getContainer().getBoundingClientRect();
+      map.flyTo({
+        center: point,
+        zoom: Math.max(map.getZoom(), 8),
+        padding: pinCardPadding(width),
+      });
+      setPin(point, { reveal: false });
     };
     const shared = decodeShare(window.location.search, new Date().getFullYear());
     const built = (label: DatasetLabel, date: string) =>
@@ -336,8 +346,13 @@ export default function SiteMap() {
 
           setSavedSites(shared.sites);
           if (shared.pin) {
-            map.jumpTo({ center: shared.pin, zoom: Math.max(map.getZoom(), 7) });
-            setPin(shared.pin);
+            const { width } = map.getContainer().getBoundingClientRect();
+            map.jumpTo({
+              center: shared.pin,
+              zoom: Math.max(map.getZoom(), 7),
+              padding: pinCardPadding(width),
+            });
+            setPin(shared.pin, { reveal: false });
           }
           // After setPin, so its reset of the year overrides doesn't win.
           setInputs(shared.inputs);
@@ -494,7 +509,7 @@ export default function SiteMap() {
   }, [analysis, congestion, congestionError]);
 
   return (
-    <div className="absolute inset-0">
+    <div className={`absolute inset-0${analysis ? " map-has-pin" : ""}`}>
       <div ref={containerRef} className="h-screen w-screen" />
 
       <div className="pointer-events-none absolute top-24 left-4 z-10 flex items-start gap-2">
@@ -518,8 +533,10 @@ export default function SiteMap() {
       </div>
 
       <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex flex-col gap-3">
-        {zonesVisible && <CongestionLegend metric={metric} meta={congestionMeta} />}
-        {/* The pin card lists the same voltage tiers, so hide that legend then. */}
+        {/* The pin card covers congestion and voltage, so hide those legends then. */}
+        {zonesVisible && !analysis && (
+          <CongestionLegend metric={metric} meta={congestionMeta} />
+        )}
         {!analysis && (showLines || showSubstations || showGas) && (
           <TransmissionLegend
             showLines={showLines}
@@ -543,7 +560,10 @@ export default function SiteMap() {
           onInputsChange={setInputs}
           saveState={pinSaved ? "saved" : savedSites.length >= 3 ? "full" : "available"}
           onSave={() => {
-            if (pinPoint && !pinSaved && savedSites.length < 3) {
+            if (!pinPoint) return;
+            if (pinSaved) {
+              setSavedSites((sites) => sites.filter((site) => !samePoint(site, pinPoint)));
+            } else if (savedSites.length < 3) {
               setSavedSites((sites) => [...sites, [pinPoint[0], pinPoint[1]]]);
             }
           }}
@@ -556,6 +576,7 @@ export default function SiteMap() {
         inputs={inputs}
         onShow={(i) => flyToRef.current(savedSites[i])}
         onRemove={(i) => setSavedSites((sites) => sites.filter((_, j) => j !== i))}
+        onClear={() => setSavedSites([])}
       />
 
       {status === "loading" && (

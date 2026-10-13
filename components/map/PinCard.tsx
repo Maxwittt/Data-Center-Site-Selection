@@ -27,7 +27,7 @@ interface PinCardProps {
 
 const SAVE_LABELS = {
   available: "Save to compare",
-  saved: "Saved to compare",
+  saved: "Remove from compare",
   full: "Compare is full (3)",
 } as const;
 
@@ -110,14 +110,19 @@ export default function PinCard({
       aria-label="Dropped pin"
       className="pointer-events-auto absolute top-4 right-4 z-10 max-h-[calc(100dvh-2rem)] w-80 overflow-y-auto rounded-xl border border-white/10 bg-zinc-950/85 p-4 shadow-lg shadow-black/40 backdrop-blur-md"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
+      <div className="relative flex items-start justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-1.5">
           <p className="text-[10px] font-medium tracking-wider text-cyan-400 uppercase">
             Dropped pin
           </p>
-          <p className="mt-0.5 font-mono text-xs text-zinc-300">
-            {formatCoord(point[1], "N", "S")}, {formatCoord(point[0], "E", "W")}
-          </p>
+          <SourceNote
+            label={`Coordinates, ${formatCoord(point[1], "N", "S")}, ${formatCoord(point[0], "E", "W")}`}
+            placement="down"
+          >
+            <span className="font-mono">
+              {formatCoord(point[1], "N", "S")}, {formatCoord(point[0], "E", "W")}
+            </span>
+          </SourceNote>
         </div>
         <button
           type="button"
@@ -133,8 +138,12 @@ export default function PinCard({
         <button
           type="button"
           onClick={onSave}
-          disabled={saveState !== "available"}
-          className="rounded-md border border-cyan-400/40 bg-cyan-400/10 px-2 py-1 text-[11px] font-medium text-cyan-200 hover:bg-cyan-400/20 disabled:cursor-default disabled:border-white/10 disabled:bg-transparent disabled:text-zinc-500"
+          disabled={saveState === "full"}
+          className={`rounded-md px-2 py-1 text-[11px] font-medium ${
+            saveState === "available"
+              ? "border border-cyan-400/40 bg-cyan-400/10 text-cyan-200 hover:bg-cyan-400/20"
+              : "border border-white/10 text-zinc-300 hover:bg-white/10 hover:text-zinc-50 disabled:cursor-default disabled:text-zinc-500"
+          }`}
         >
           {SAVE_LABELS[saveState]}
         </button>

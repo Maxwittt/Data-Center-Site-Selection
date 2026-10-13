@@ -49,3 +49,8 @@ body {
 .maplibregl-ctrl-attrib a {
   color: rgb(212 212 216);
 }
+
+/* Slide zoom/attribution left of the pin card so they stay clickable. */
+.map-has-pin .maplibregl-ctrl-bottom-right {
+  right: 21.5rem;
+}

@@ -98,3 +98,61 @@ export function createSiteMarker(label: string, onClick: () => void): Marker {
   });
   return new Marker({ element });
 }
+
+/** Pin card is `right-4 w-80`; keep a little air so the pin is not flush against it. */
+export const PIN_CARD_RIGHT_PX = 16 + 320 + 24;
+
+const EDGE_PAD = 32;
+const MIN_OPEN_WIDTH = 220;
+
+export function pinCardPadding(width: number): {
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+} {
+  return {
+    top: 16,
+    right: Math.min(PIN_CARD_RIGHT_PX, Math.max(0, width - MIN_OPEN_WIDTH)),
+    bottom: 16,
+    left: 16,
+  };
+}
+
+/** True when the pin would sit under the card or off the remaining map. */
+export function pinNeedsReveal(
+  screenX: number,
+  screenY: number,
+  width: number,
+  height: number,
+): boolean {
+  const { right, left, top, bottom } = pinCardPadding(width);
+  return (
+    screenX < left + EDGE_PAD ||
+    screenX > width - right - EDGE_PAD ||
+    screenY < top + EDGE_PAD ||
+    screenY > height - bottom - EDGE_PAD
+  );
+}
+
+/**
+ * If the pin is under the card, slide the view so it sits in the open map.
+ * Zoom stays put; only the camera center moves.
+ */
+export function revealPin(map: MapLibreMap, point: Position) {
+  const { width, height } = map.getContainer().getBoundingClientRect();
+  const screen = map.project(point);
+  if (!pinNeedsReveal(screen.x, screen.y, width, height)) return;
+  map.easeTo({
+    center: point,
+    padding: pinCardPadding(width),
+    duration: 400,
+  });
+}
+
+export function clearPinPadding(map: MapLibreMap) {
+  map.easeTo({
+    padding: { top: 0, right: 0, bottom: 0, left: 0 },
+    duration: 250,
+  });
+}

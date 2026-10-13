@@ -223,7 +223,19 @@ export function addCongestionLayers(
       layout: { "fill-sort-key": ["get", "drawOrder"] },
       paint: {
         "fill-color": fillColorExpression(metric, collection.meta),
-        "fill-opacity": 1,
+        // Opaque enough to read at MISO scale; fades so streets show through
+        // once you zoom into a town. Vector tiles stop adding geometry at 14.
+        "fill-opacity": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          0.82,
+          8,
+          0.52,
+          12,
+          0.3,
+        ],
       },
     },
     beforeId,

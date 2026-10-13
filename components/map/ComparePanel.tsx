@@ -9,6 +9,7 @@ interface ComparePanelProps {
   inputs: CalculatorInputs;
   onShow: (index: number) => void;
   onRemove: (index: number) => void;
+  onClear: () => void;
 }
 
 const mi = (miles: number | null | undefined) =>
@@ -102,10 +103,28 @@ function download(csv: string) {
   URL.revokeObjectURL(url);
 }
 
-export default function ComparePanel({ summaries, inputs, onShow, onRemove }: ComparePanelProps) {
+export default function ComparePanel({
+  summaries,
+  inputs,
+  onShow,
+  onRemove,
+  onClear,
+}: ComparePanelProps) {
   const [open, setOpen] = useState(true);
   const panelId = useId();
   if (summaries.length === 0) return null;
+
+  if (!open) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="pointer-events-auto absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full border border-white/10 bg-zinc-950/90 px-3 py-1.5 text-xs font-medium text-zinc-100 shadow-lg shadow-black/40 backdrop-blur-md hover:bg-zinc-900"
+      >
+        Compare sites ({summaries.length}/3)
+      </button>
+    );
+  }
 
   return (
     <section
@@ -113,23 +132,10 @@ export default function ComparePanel({ summaries, inputs, onShow, onRemove }: Co
       className="pointer-events-auto absolute bottom-4 left-1/2 z-10 w-[min(34rem,calc(100vw-2rem))] -translate-x-1/2 rounded-xl border border-white/10 bg-zinc-950/90 px-4 py-3 shadow-lg shadow-black/40 backdrop-blur-md"
     >
       <div className="flex items-center justify-between gap-2">
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((value) => !value)}
-          className="flex items-center gap-1.5 text-xs font-semibold tracking-tight text-zinc-100"
-        >
+        <p className="text-xs font-semibold tracking-tight text-zinc-100">
           Compare sites ({summaries.length}/3)
-          <svg
-            viewBox="0 0 12 12"
-            aria-hidden
-            className={`h-3.5 w-3.5 transition-transform ${open ? "" : "rotate-180"}`}
-          >
-            <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-        {open && (
+        </p>
+        <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={() => download(summaryCsv(summaries, inputs))}
@@ -137,34 +143,48 @@ export default function ComparePanel({ summaries, inputs, onShow, onRemove }: Co
           >
             Download CSV
           </button>
-        )}
+          <button
+            type="button"
+            onClick={onClear}
+            className="rounded-md border border-white/10 px-2 py-0.5 text-[11px] text-zinc-300 hover:bg-white/10 hover:text-zinc-50"
+          >
+            Clear
+          </button>
+          <button
+            type="button"
+            aria-label="Close comparison"
+            onClick={() => setOpen(false)}
+            className="rounded-md px-1.5 py-0.5 text-zinc-400 hover:bg-white/10 hover:text-zinc-50"
+          >
+            ×
+          </button>
+        </div>
       </div>
 
-      {open && (
-        <div id={panelId}>
+      <div id={panelId}>
           <table className="mt-2 w-full table-fixed text-[11px]">
             <thead>
               <tr>
-                <th className="w-32" />
+                <th className="w-28" />
                 {summaries.map((s, i) => (
                   <th key={SITE_LABELS[i]} scope="col" className="pb-1 text-left font-normal">
-                    <span className="flex items-center gap-1">
+                    <span className="flex min-w-0 items-center gap-1">
                       <button
                         type="button"
                         onClick={() => onShow(i)}
                         title="Show on map"
-                        className="flex h-4 w-4 items-center justify-center rounded-full bg-cyan-400 text-[10px] font-bold text-zinc-950"
+                        className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-400 text-[10px] font-bold text-zinc-950"
                       >
                         {SITE_LABELS[i]}
                       </button>
-                      <span className="truncate font-mono text-zinc-500">
+                      <span className="min-w-0 truncate font-mono text-zinc-500">
                         {s.point[1].toFixed(2)}, {s.point[0].toFixed(2)}
                       </span>
                       <button
                         type="button"
                         onClick={() => onRemove(i)}
                         aria-label={`Remove site ${SITE_LABELS[i]}`}
-                        className="ml-auto px-1 text-zinc-500 hover:text-zinc-50"
+                        className="shrink-0 px-1 text-base leading-none text-zinc-400 hover:text-zinc-50"
                       >
                         ×
                       </button>
@@ -201,8 +221,7 @@ export default function ComparePanel({ summaries, inputs, onShow, onRemove }: Co
             Each site uses its default years with {inputs.mw || "0"} MW and the shared cost
             inputs. Green marks the best value in a row; red marks a gap or heavy queue.
           </p>
-        </div>
-      )}
+      </div>
     </section>
   );
 }
