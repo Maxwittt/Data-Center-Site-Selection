@@ -278,7 +278,13 @@ export default function SiteMap() {
       setHover(null);
     });
 
+    const resize = new ResizeObserver(() => {
+      map.resize();
+    });
+    resize.observe(container);
+
     map.once("load", () => {
+      map.resize();
       addTransmissionLayer(map);
       addPinConnectorLayer(map);
 
@@ -372,6 +378,7 @@ export default function SiteMap() {
 
     return () => {
       abort.abort();
+      resize.disconnect();
       setPinRef.current = () => {};
       flyToRef.current = () => {};
       marker?.remove();
@@ -509,8 +516,8 @@ export default function SiteMap() {
   }, [analysis, congestion, congestionError]);
 
   return (
-    <div className={`absolute inset-0${analysis ? " map-has-pin" : ""}`}>
-      <div ref={containerRef} className="h-screen w-screen" />
+    <div className={analysis ? "absolute inset-0 map-has-pin" : "absolute inset-0"}>
+      <div ref={containerRef} className="absolute inset-0" />
 
       <div className="pointer-events-none absolute top-24 left-4 z-10 flex items-start gap-2">
         <LayersCard
